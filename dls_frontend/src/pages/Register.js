@@ -92,7 +92,7 @@ const Signup = () => {
       let res = await axios(
         "http://localhost:8000/ngiojnfijniwrfnmdfdsfdsoiwrjfnijognre/"
       );
-      setUsers(res.data.users);
+      setUsers(res.data);
       // console.log(res.data.users)
     } catch (err) {
       console.log(err);

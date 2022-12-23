@@ -9,7 +9,7 @@ console.log(data)
     return(
         <div className="navigationbar">
             <Link to="/"> Home </Link>
-            {!data.userInfo.isLoggedIn && <Link to="/signup"> Sign Up </Link>}
+            {!data.userInfo.isLoggedIn && <Link to="/register"> Sign Up </Link>}
             {!data.userInfo.isLoggedIn && <Link to="/signin"> Log In </Link>}
             {data.userInfo.isLoggedIn && <Link to="/logout" onClick={()=>data.setUserInfo({loggedIn:false})}> Log Out </Link>}
             {data.userInfo.isLoggedIn && <span>Welcome {data.userInfo.username}</span>}
