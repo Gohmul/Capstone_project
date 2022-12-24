@@ -3,6 +3,7 @@ from . import views
 from rest_framework.routers import DefaultRouter
 from django.contrib import admin
 
+
 urlpatterns = [
     path('fwjyhrthtrhtegegrgerge/', views.LocationList.as_view(
         {'get': 'list'}), name='location_list'),
