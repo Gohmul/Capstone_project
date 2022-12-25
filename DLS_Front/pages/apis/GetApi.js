@@ -32,7 +32,3 @@ const getComments = async () => {
 getLocations();
 getMachines();
 getComments();
-
-export default {
-  getLocations,
-};
