@@ -8,9 +8,9 @@ export default function Welcome() {
   return (
     <nav className="login-options">
       {!user ? (
-        <Link href="/auth/login" className="login">
-          Login
-        </Link>
+        <div className="login">
+          <Link href="/auth/login">Login</Link>
+        </div>
       ) : (
         <h3 className="login" onClick={() => auth.signOut()}>
           Log Out

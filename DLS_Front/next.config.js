@@ -3,7 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 };
-
+experiments: {
+  topLevelAwait: true;
+}
 module.exports = nextConfig;
 module.exports = {
   env: {
@@ -14,5 +16,12 @@ module.exports = {
     NEXT_MESSAGING_SENDER_ID: process.env.NEXT_MESSAGING_SENDER_ID,
     NEXT_APP_ID: process.env.NEXT_APP_ID,
     NEXT_MEASUREMENT_ID: process.env.NEXT_MEASUREMENT_ID,
+    BASE_URL: process.env.BASE_URL,
+    LOCATIONS: process.env.LOCATIONS,
+    LOCATION_DETAILS: process.env.LOCATION_DETAILS,
+    MACHINE_LIST: process.env.MACHINE_LIST,
+    MACHINE_DETAILS: process.env.MACHINE_DETAILS,
+    COMMENT_LIST: process.env.COMMENT_LIST,
+    COMMENT_DETAILS: process.env.COMMENT_DETAILS,
   },
 };
