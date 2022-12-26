@@ -5,8 +5,8 @@ from .models import Location, Machine, User, Comment
 class MachineSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Machine
-        fields = ('id', 'model', ',make', 'price', 'mach_img',
-                  'locationID')
+        fields = ('id', 'model', 'make', 'price', 'mach_img',
+                  )
 
 
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,7 +25,7 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ('id', 'username', 'content', 'likes', 'userID')
+        fields = ('id', 'uid', 'displayName', 'photoURL', 'content', 'likes')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

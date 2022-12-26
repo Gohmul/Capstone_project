@@ -18,15 +18,17 @@ class User(models.Model):
 
 
 class Comment(models.Model):
-    username = models.CharField(max_length=16, unique=False)
+    uid = models.CharField(max_length=500, unique=False,
+                           default="please find user id")
+    displayName = models.CharField(
+        max_length=500, unique=False, default="default")
+    photoURL = models.CharField(
+        max_length=500, unique=False, default="default")
     content = models.TextField()
-    likes = models.IntegerField()
-    UserID = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='userID'
-    )
+    likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.username
+        return self.uid
 
 
 # class Carousel(models.Model):
@@ -47,7 +49,7 @@ class Comment(models.Model):
 class Location(models.Model):
     name = models.CharField(max_length=100, unique=True)
     street = models.CharField(max_length=50, unique=True)
-    city = models.CharField(max_length=50, unique=True)
+    city = models.CharField(max_length=50)
     state = models.CharField(max_length=50, unique=True)
     loc_img = models.ImageField(
         upload_to='locations', height_field=None, width_field=None, default="null")
@@ -63,8 +65,8 @@ class Machine(models.Model):
     price = models.DecimalField(max_digits=11, decimal_places=2)
     mach_img = models.ImageField(
         upload_to='machines', height_field=None, width_field=None, default="null")
-    LocationID = models.ForeignKey(
-        Location, on_delete=models.CASCADE, related_name='locationID'
+    LocationName = models.ForeignKey(
+        Location, on_delete=models.CASCADE, related_name='model', default=0
     )
 
     def __str__(self):

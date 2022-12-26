@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from rest_framework import generics
 from rest_framework import viewsets
+from rest_framework import generics
+
 from .serializers import LocationSerializer, MachineSerializer, CommentSerializer, UserSerializer
 from .models import Location, Machine, User, Comment
 # Create your views here.
@@ -36,12 +37,13 @@ class UserDetails(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class CommentList(viewsets.ModelViewSet):
+class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 
-class CommentDetails(viewsets.ModelViewSet):
+class CommentDetails(viewsets.ModelViewSet
+                     ):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 

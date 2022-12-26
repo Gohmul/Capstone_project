@@ -7,7 +7,6 @@ const getLocations = async () => {
   window.localStorage.setItem("locations", dataString);
   return data;
 };
-getLocations();
 
 const getMachines = async () => {
   const response = await fetch(
@@ -18,7 +17,6 @@ const getMachines = async () => {
   window.localStorage.setItem("machines", dataString);
   return data;
 };
-getLocations();
 
 const getComments = async () => {
   const response = await fetch(
@@ -32,3 +30,8 @@ const getComments = async () => {
 getLocations();
 getMachines();
 getComments();
+export default {
+  getLocations,
+  getMachines,
+  getComments,
+};

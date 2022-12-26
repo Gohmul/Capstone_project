@@ -12,9 +12,14 @@ export default function Dashboard() {
 
   if (user)
     return (
-      <div>
-        <h1>Welcome to your Dashboard. {user.displayName}</h1>
-        <button onClick={() => auth.signOut()}>Sign out</button>
+      <div className="dashboard-container">
+        <div className="dashboard">
+          <h1>Welcome to your Dashboard {user.displayName}!</h1>
+          <img src={user.photoURL} />
+          <button className="dashboard-btn" onClick={() => auth.signOut()}>
+            Sign out
+          </button>
+        </div>
       </div>
     );
 }
