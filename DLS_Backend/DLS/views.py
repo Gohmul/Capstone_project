@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import generics
-
 from .serializers import LocationSerializer, MachineSerializer, CommentSerializer, UserSerializer
 from .models import Location, Machine, User, Comment
+from django.utils.deprecation import MiddlewareMixin
+
 # Create your views here.
 
 
@@ -42,11 +43,17 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
 
 
-class CommentDetails(viewsets.ModelViewSet
+class CommentDetails(generics.RetrieveUpdateDestroyAPIView
                      ):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
+
+class CORSMiddleware(MiddlewareMixin):
+    def process_response(self, request, response):
+
+        response['Access-Control-Allow-Origin'] = "*"
+        return response
 
 # class CarouselList(viewsets.ModelViewSet):
 #     queryset = Carousel.objects.all()

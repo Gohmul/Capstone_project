@@ -32,8 +32,8 @@ urlpatterns = [
     ), name='comment_list'),
 
 
+
     path(f'{CommentDetails}/<int:pk>', views.CommentDetails.as_view(
-        {'get': 'list'}
     ), name='comment-details'),
 
     path('ngiojnfijniwrfnmdfdsfdsoiwrjfnijognre/', views.UserList.as_view(

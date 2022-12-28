@@ -4,26 +4,32 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import getApi from "./apis/GetApi.js";
 import React, { useState } from "react";
+import Refresh from "../components/Refresh";
+import Loading from "../components/Loading";
 
 export default function Games() {
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [machines, setMachines] = useState(null);
 
-  const getMachinesAndConvertToArray = () => {
-    const item = localStorage.getItem("machines");
-    const backToObject = JSON.parse(item);
-    const intoAnArray = Object.values(backToObject);
-    setMachines(intoAnArray);
+  const getMachinesAndConvertToArray = (item) => {
+    if (item) {
+      const backToObject = JSON.parse(item);
+      const intoAnArray = Object.values(backToObject);
+      setMachines(intoAnArray);
+    }
   };
 
   useEffect(() => {
-    // Perform localStorage action
-    getMachinesAndConvertToArray();
+    getApi.getMachines();
+    const item = localStorage.getItem("machines");
+    getMachinesAndConvertToArray(item);
   }, []);
 
   console.log(machines);
-
+  if (loading) {
+    return <Loading />;
+  }
   if (machines) {
     return (
       <div className="grid">
@@ -37,6 +43,6 @@ export default function Games() {
       </div>
     );
   } else {
-    return <h1>Loading</h1>;
+    return <Refresh />;
   }
 }

@@ -4,25 +4,33 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import getApi from "./apis/GetApi.js";
 import React, { useState } from "react";
+import Refresh from "../components/Refresh";
+import Loading from "../components/Loading";
 
 export default function Locations() {
+  getApi.getLocations();
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
+
   const [locations, setLocations] = useState(null);
 
-  const getLocationsAndConvertToArray = () => {
-    const item = localStorage.getItem("locations");
-    const backToObject = JSON.parse(item);
-    const intoAnArray = Object.values(backToObject);
-    setLocations(intoAnArray);
+  const getLocationsAndConvertToArray = (item) => {
+    if (item) {
+      const backToObject = JSON.parse(item);
+      const intoAnArray = Object.values(backToObject);
+      setLocations(intoAnArray);
+    } else window.reload;
   };
-
+  console.log(locations);
   useEffect(() => {
-    // Perform localStorage action
-    getLocationsAndConvertToArray();
+    getApi.getLocations();
+    const item = localStorage.getItem("locations");
+    getLocationsAndConvertToArray(item);
   }, []);
 
-  console.log(locations);
+  if (loading) {
+    return <Loading />;
+  }
 
   if (locations) {
     return (
@@ -40,6 +48,6 @@ export default function Locations() {
       </div>
     );
   } else {
-    return <h1>Loading</h1>;
+    return <Refresh />;
   }
 }

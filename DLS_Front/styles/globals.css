@@ -306,4 +306,10 @@ font-family: cursive;
     opacity: 0.7;
     cursor: not-allowed;
   }
+
+.refresh {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
   
