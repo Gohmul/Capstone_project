@@ -5,7 +5,10 @@ export default function Footer() {
       <div className="footer">
         <a target="_blank" className="footer-item githublogo">
           <p className="color1">Repo</p>
-          <img className="githublogo" src={Github}></img>
+          <img
+            className="githublogo"
+            src={"https://i.imgur.com/qHI6iip.png"}
+          ></img>
         </a>
         <a
           href="https://github.com/Gohmul"
@@ -13,19 +16,10 @@ export default function Footer() {
           className="footer-item githublogo"
         >
           <p className="color2">Ryan</p>
-          <img className="githublogo" src={Github}></img>
-        </a>
-        <a target="_blank" className="footer-item githublogo">
-          <p className="color3">Placeholder</p>
-          <img className="githublogo" src={Github}></img>
-        </a>
-        <a target="_blank" className="footer-item githublogo">
-          <p className="color4">Placeholder</p>
-          <img className="githublogo" src={Github}></img>
-        </a>
-        <a target="_blank" className="footer-item githublogo">
-          <p className="color5">Placeholder</p>
-          <img className="githublogo" src={Github}></img>
+          <img
+            className="githublogo"
+            src={"https://i.imgur.com/qHI6iip.png"}
+          ></img>
         </a>
       </div>
     </div>

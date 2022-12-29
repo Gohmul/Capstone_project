@@ -22,7 +22,7 @@ export default function Games() {
 
   useEffect(() => {
     getApi.getMachines();
-    const item = localStorage.getItem("machines");
+    const item = sessionStorage.getItem("machines");
     getMachinesAndConvertToArray(item);
   }, []);
 
@@ -43,6 +43,6 @@ export default function Games() {
       </div>
     );
   } else {
-    return <Refresh />;
+    return window.location.reload();
   }
 }

@@ -18,6 +18,7 @@ export default function Dashboard() {
       <div className="dashboard-container">
         <div className="dashboard">
           <h1>Welcome to your Dashboard {user.displayName}!</h1>
+          {/* <img src={user.photoURL} /> */}
           <button className="dashboard-btn" onClick={() => auth.signOut()}>
             Sign out
           </button>

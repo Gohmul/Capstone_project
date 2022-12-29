@@ -54,8 +54,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'DLS.views.CORSMiddleware'
+    'DLS.views.CORSMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+CORS_ALLOW_HEADERS = ['Content-Type']
+
 
 ROOT_URLCONF = 'DLS_django.urls'
 

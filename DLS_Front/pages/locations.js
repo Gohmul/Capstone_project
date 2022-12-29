@@ -24,7 +24,7 @@ export default function Locations() {
   console.log(locations);
   useEffect(() => {
     getApi.getLocations();
-    const item = localStorage.getItem("locations");
+    const item = sessionStorage.getItem("locations");
     getLocationsAndConvertToArray(item);
   }, []);
 
@@ -48,6 +48,6 @@ export default function Locations() {
       </div>
     );
   } else {
-    return <Refresh />;
+    return window.location.reload();
   }
 }

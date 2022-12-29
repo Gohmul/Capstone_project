@@ -178,6 +178,10 @@ font-family: cursive;
   transform: scale(1.1);
   
 }
+.githublogo{
+  width: auto;
+  height: 75%;
+}
 
 .login-options {
   width: 100%;

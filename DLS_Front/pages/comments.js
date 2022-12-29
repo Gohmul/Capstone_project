@@ -6,12 +6,13 @@ import getApi from "./apis/GetApi.js";
 import React, { useState } from "react";
 import Refresh from "../components/Refresh";
 import Loading from "../components/Loading";
-
 export default function Comments() {
   getApi.getComments();
+
   const route = useRouter();
   const [user, loading] = useAuthState(auth);
   const [comments, setComments] = useState(null);
+  const [editingCommentID, setEditingCommentID] = useState();
   const [content, setContent] = useState({
     content: "",
   });
@@ -26,13 +27,13 @@ export default function Comments() {
   console.log(user);
   const handleChange = (e) => {
     setContent({ ...content, [e.target.id]: e.target.value });
-    setCommenter({
-      uid: user?.uid,
-      displayName: user?.displayName,
-      photoURL: user?.photoURL,
-      content: content.content,
-      likes: "0",
-    });
+    // setCommenter({
+    //   uid: user?.uid,
+    //   displayName: user?.displayName,
+    //   photoURL: user?.photoURL,
+    //   content: content.content,
+    //   likes: "0",
+    // });
     console.log(commenter);
     console.log(JSON.stringify(commenter));
   };
@@ -45,29 +46,37 @@ export default function Comments() {
       console.log(intoAnArray);
     }
   };
-
+  const attachCommenter = () => {
+    setCommenter({
+      uid: user?.uid,
+      displayName: user?.displayName,
+      photoURL: user?.photoURL,
+      content: content.content,
+      likes: "0",
+    });
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = JSON.stringify(commenter);
 
     try {
+      console.log(commenter);
       const response = await fetch(
         `http://localhost:8000/${process.env.COMMENT_LIST}/`,
         {
           method: "POST", // *GET, POST, PUT, DELETE, etc.
-          mode: "no-cors", // no-cors, *cors, same-origin
+          mode: "cors", // no-cors, *cors, same-origin
           credentials: "omit", // include, *same-origin, omit
-          body: JSON.stringify(data),
+          body: JSON.stringify(commenter),
           headers: {
+            Accept: "application/json",
             "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
       );
-      getApi.getComments();
-      // window.location.reload();
       console.log(response);
       console.log(response.data);
+      // window.sessionStorage.clear();
+      // window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -89,6 +98,7 @@ export default function Comments() {
         // The request was successful
         const data = await res.json();
         console.log(data);
+        window.sessionStorage.clear("comments");
         window.location.reload();
       } else {
         // There was an error
@@ -96,14 +106,50 @@ export default function Comments() {
       }
     } catch (error) {
       console.error(error);
+      window.sessionStorage.clear();
+      window.location.reload();
+    }
+  };
+
+  const handleEdit = async (e, id) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(
+        `http://localhost:8000/${process.env.COMMENT_DETAILS}/${editingCommentID}`,
+        {
+          method: "PUT",
+          mode: "cors", // no-cors, *cors, same-origin
+          body: JSON.stringify(commenter),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
+      if (res.ok) {
+        // The request was successful
+        const data = await res.json();
+        console.log(data);
+        window.sessionStorage.clear("comments");
+        window.location.reload();
+      } else {
+        // There was an error
+        console.error(`HTTP error: ${res.status}`);
+        // window.sessionStorage.clear("comments");
+        // window.location.reload();
+      }
+    } catch (error) {
+      console.error(error);
+      // window.sessionStorage.clear();
+      // window.location.reload();
     }
   };
 
   useEffect(() => {
-    const item = localStorage.getItem("comments");
+    const item = sessionStorage.getItem("comments");
     getCommentsAndConvertToArray(item);
   }, []);
-
   if (loading) {
     return <Loading />;
   }
@@ -111,7 +157,11 @@ export default function Comments() {
   if (user?.uid && comments) {
     return (
       <div className="create-comment-container">
-        <form onSubmit={handleSubmit} className="create-comment-form">
+        <form
+          onSubmit={handleSubmit}
+          onChange={attachCommenter}
+          className="create-comment-form"
+        >
           <input
             className="content-section"
             id="content"
@@ -134,7 +184,30 @@ export default function Comments() {
               <h2>{comment.content}</h2>
               {user?.uid === comment.uid && (
                 <div>
-                  <button>edit</button>
+                  <button onClick={(event) => setEditingCommentID(comment.id)}>
+                    edit
+                    {editingCommentID === comment.id && (
+                      <form
+                        onSubmit={handleEdit}
+                        onChange={attachCommenter}
+                        className="create-comment-form"
+                      >
+                        <input
+                          className="content-section"
+                          id="content"
+                          type="text"
+                          placeholder="Leave comment here"
+                          autoComplete="off"
+                          onChange={handleChange}
+                          value={content.content}
+                        />
+
+                        <button className="post-button" type="submit">
+                          Change!
+                        </button>
+                      </form>
+                    )}
+                  </button>
                   <button onClick={(event) => handleDelete(event, comment.id)}>
                     Delete
                   </button>
@@ -158,5 +231,5 @@ export default function Comments() {
         ))}
       </div>
     );
-  } else return <Refresh />;
+  } else return window.location.reload();
 }
