@@ -3,6 +3,7 @@ from .models import Location, Machine, User, Comment
 
 
 class MachineSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = Machine
         fields = ('id', 'model', 'make', 'price', 'mach_img',

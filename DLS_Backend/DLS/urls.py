@@ -19,22 +19,20 @@ urlpatterns = [
         {'get': 'list'}), name='location_list'),
 
     path(f'{locationDetails}/<int:pk>', views.LocationDetails.as_view(
-        {'get': 'list'}), name='location-details'),
+    ), name='location_details'),
 
     path(f'{machineList}/', views.MachineList.as_view(
         {'get': 'list'}), name='machine_list'),
 
     path(f'{machineDetails}/<int:pk>', views.MachineDetails.as_view(
-        {'get': 'list'}), name='machine-details'),
+    ), name='machine_details'),
 
 
     path(f'{commentList}/', views.CommentList.as_view(
     ), name='comment_list'),
 
-
-
     path(f'{CommentDetails}/<int:pk>', views.CommentDetails.as_view(
-    ), name='comment-details'),
+    ), name='comment_details'),
 
     path('ngiojnfijniwrfnmdfdsfdsoiwrjfnijognre/', views.UserList.as_view(
         {'get': 'list'},

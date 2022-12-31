@@ -139,7 +139,7 @@ font-family: cursive;
   align-items: center;
   margin-top: .3em;
   font-size: 24px;
-  margin-right: 50px;
+  margin-right: 50px; 
   text-decoration:none;
   color:white;
 }
@@ -177,11 +177,12 @@ font-family: cursive;
 .footer-item:hover {
   transform: scale(1.1);
   
-}
+} 
+
 .githublogo{
   width: auto;
   height: 75%;
-}
+} 
 
 .login-options {
   width: 100%;
@@ -208,14 +209,14 @@ font-family: cursive;
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
-  grid-gap: 5em;
+  grid-gap: 2.5em;
   margin-top: 5em;
   margin-left: 5em;
   margin-right: 5em;
   margin-bottom: 8em;
 }
 
-.grid-item  {
+.grid-item {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -223,19 +224,24 @@ font-family: cursive;
   box-shadow: inset 0 0 3em #daa753;
   padding-bottom: 2em;
   border: 3px solid black;
-  border-radius: 40px;
+  border-radius: .05em;
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
   align-items: center;
 }
 .grid-item:hover {
   transform: scale(1.05 );
-  border: #e06666 solid 3px;
+  border: #e06666 dashed 3px;
 }
 .grid-image {
   margin-top: 2em;
   height:200px;
-  width: auto;
+  width: 300px;
   border-radius: 20%;
   }
+
+
 
   .dashboard {
     display: flex;
@@ -316,4 +322,61 @@ font-family: cursive;
   align-items: center;
   flex-direction: column;
 }
-  
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: initial;
+  box-shadow: inset 0 0 3em #daa753;
+  padding-bottom: 2em;
+  border: 3px solid black;
+  border-radius: .05em;
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  align-items: center;
+}
+.comment:hover {
+  border: #e06666 dashed 3px;
+}
+
+.comment-image {
+  border-radius: 50%;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
+  grid-gap: 2.5em;
+  margin-top: 5em;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-bottom: 8em;
+}
+
+.game-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: initial;
+  box-shadow: inset 0 0 3em #daa753;
+  padding-bottom: 2em;
+  border: 3px solid black;
+  border-radius: .05em;
+  border-style: dashed;
+  border-color: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  align-items: center;
+}
+.gmae-item:hover {
+  transform: scale(1.05 );
+  border: #e06666 dashed 3px;
+}
+
+.game-image {
+  margin-top: 2em;
+  height:400px;
+  width: auto;
+  border-radius: 20%;
+  }

@@ -28,7 +28,7 @@ class Comment(models.Model):
     likes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.uid
+        return self.id
 
 
 # class Carousel(models.Model):
@@ -53,15 +53,15 @@ class Location(models.Model):
     state = models.CharField(max_length=50, unique=True)
     loc_img = models.ImageField(
         upload_to='locations', height_field=None, width_field=None, default="null")
-    zipcode = models.IntegerField()
+    zipcode = models.CharField(max_length=6)
 
     def __str__(self):
         return self.name
 
 
 class Machine(models.Model):
-    model = models.CharField(max_length=100, unique=True)
-    make = models.CharField(max_length=100, unique=True)
+    model = models.CharField(max_length=100, unique=False)
+    make = models.CharField(max_length=100, unique=False)
     price = models.DecimalField(max_digits=11, decimal_places=2)
     mach_img = models.ImageField(
         upload_to='machines', height_field=None, width_field=None, default="null")

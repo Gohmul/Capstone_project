@@ -24,12 +24,12 @@ module.exports = {
     COMMENT_LIST: process.env.COMMENT_LIST,
     COMMENT_DETAILS: process.env.COMMENT_DETAILS,
   },
-  async rewrites() {
-    return [
-      {
-        source: "/:path*",
-        destination: "http://localhost:4000/:path*",
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/:path*",
+  //       destination: "http://localhost:4000/:path*",
+  //     },
+  //   ];
+  // },
 };

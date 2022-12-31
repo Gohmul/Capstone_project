@@ -2,5 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/comments": "pages/comments.js"
+  "/locations": "pages/locations.js",
+  "/games": "pages/games.js",
+  "/games/[machineId]": "pages/games/[machineId].js",
+  "/": "pages/index.js"
 }

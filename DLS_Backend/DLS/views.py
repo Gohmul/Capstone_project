@@ -13,7 +13,7 @@ class LocationList(viewsets.ModelViewSet):
     serializer_class = LocationSerializer
 
 
-class LocationDetails(viewsets.ModelViewSet):
+class LocationDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
 
@@ -23,7 +23,7 @@ class MachineList(viewsets.ModelViewSet):
     serializer_class = MachineSerializer
 
 
-class MachineDetails(viewsets.ModelViewSet):
+class MachineDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Machine.objects.all()
     serializer_class = MachineSerializer
 

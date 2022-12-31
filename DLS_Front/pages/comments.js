@@ -13,6 +13,7 @@ export default function Comments() {
   const [user, loading] = useAuthState(auth);
   const [comments, setComments] = useState(null);
   const [editingCommentID, setEditingCommentID] = useState();
+  const [showEdit, setShowEdit] = useState(false);
   const [content, setContent] = useState({
     content: "",
   });
@@ -27,13 +28,6 @@ export default function Comments() {
   console.log(user);
   const handleChange = (e) => {
     setContent({ ...content, [e.target.id]: e.target.value });
-    // setCommenter({
-    //   uid: user?.uid,
-    //   displayName: user?.displayName,
-    //   photoURL: user?.photoURL,
-    //   content: content.content,
-    //   likes: "0",
-    // });
     console.log(commenter);
     console.log(JSON.stringify(commenter));
   };
@@ -75,8 +69,8 @@ export default function Comments() {
       );
       console.log(response);
       console.log(response.data);
-      // window.sessionStorage.clear();
-      // window.location.reload();
+      window.sessionStorage.clear();
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -136,13 +130,9 @@ export default function Comments() {
       } else {
         // There was an error
         console.error(`HTTP error: ${res.status}`);
-        // window.sessionStorage.clear("comments");
-        // window.location.reload();
       }
     } catch (error) {
       console.error(error);
-      // window.sessionStorage.clear();
-      // window.location.reload();
     }
   };
 
@@ -178,14 +168,14 @@ export default function Comments() {
         </form>
         <div className="grid">
           {comments.map((comment, index) => (
-            <div className="grid-item" key={index}>
+            <div className="comment" key={index}>
               <h2>{comment.displayName}</h2>
-              {/* <img src={comment.photoURL} /> */}
+              <img className="comment-image" src={comment.photoURL} />
               <h2>{comment.content}</h2>
               {user?.uid === comment.uid && (
                 <div>
-                  <button onClick={(event) => setEditingCommentID(comment.id)}>
-                    edit
+                  <h3 onClick={(event) => setEditingCommentID(comment.id)}>
+                    Edit
                     {editingCommentID === comment.id && (
                       <form
                         onSubmit={handleEdit}
@@ -196,7 +186,7 @@ export default function Comments() {
                           className="content-section"
                           id="content"
                           type="text"
-                          placeholder="Leave comment here"
+                          placeholder={comment.content}
                           autoComplete="off"
                           onChange={handleChange}
                           value={content.content}
@@ -207,10 +197,10 @@ export default function Comments() {
                         </button>
                       </form>
                     )}
-                  </button>
-                  <button onClick={(event) => handleDelete(event, comment.id)}>
+                  </h3>
+                  <h3 onClick={(event) => handleDelete(event, comment.id)}>
                     Delete
-                  </button>
+                  </h3>
                 </div>
               )}
             </div>
@@ -223,9 +213,9 @@ export default function Comments() {
     return (
       <div className="grid">
         {comments.map((comment, index) => (
-          <div className="grid-item" key={index}>
+          <div className="comment" key={index}>
             <h2>{comment.displayName}</h2>
-            <img src={comment.photoURL} />
+            <img className="comment-image" src={comment.photoURL} />
             <h2>{comment.content}</h2>
           </div>
         ))}

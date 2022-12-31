@@ -64,6 +64,29 @@ async function getMachines() {
     console.error(error);
   }
 }
+
+async function getMachineDetails(id) {
+  const BASE_URL = process.env.BASE_URL;
+  const MACHINE_DETAILS = process.env.MACHINE_DETAILS;
+
+  try {
+    const response = await fetch(`${BASE_URL}/${MACHINE_DETAILS}/${id}`, {
+      mode: "cors", // no-cors, *cors, same-origin
+      Accept: "application/json",
+      credentials: "omit", // include, *same-origin, omit
+      headers: {
+        Accept: "application/json",
+      },
+    });
+    const data = await response.json();
+    const dataString = JSON.stringify(data);
+    window.sessionStorage.setItem("machine", dataString);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 getLocations();
 getMachines();
 getComments();
@@ -71,5 +94,6 @@ getComments();
 export default {
   getLocations,
   getMachines,
+  getMachineDetails,
   getComments,
 };
