@@ -15,7 +15,6 @@ function MachineDetail() {
   getApi.getMachineDetails(machineId);
 
   // use the machineId to fetch data for the specific machine and render the page
-  console.log(machineId);
   useEffect(() => {
     const items = sessionStorage.getItem("machine");
     setMachine(items);

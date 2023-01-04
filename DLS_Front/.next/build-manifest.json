@@ -30,20 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/games": [
+    "/comments": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/games.js"
-    ],
-    "/games/[machineId]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/games/[machineId].js"
-    ],
-    "/locations": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/locations.js"
+      "static/chunks/pages/comments.js"
     ]
   },
   "ampFirstPages": []

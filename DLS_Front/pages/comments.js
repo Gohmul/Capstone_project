@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import getApi from "./apis/GetApi.js";
 import React, { useState } from "react";
-import Refresh from "../components/Refresh";
 import Loading from "../components/Loading";
 export default function Comments() {
   getApi.getComments();
@@ -14,9 +13,7 @@ export default function Comments() {
   const [comments, setComments] = useState(null);
   const [editingCommentID, setEditingCommentID] = useState();
   const [showEdit, setShowEdit] = useState(false);
-  const [content, setContent] = useState({
-    content: "",
-  });
+  const [content, setContent] = useState("");
   const [commenter, setCommenter] = useState([
     {
       uid: user?.uid,
@@ -28,6 +25,7 @@ export default function Comments() {
   console.log(user);
   const handleChange = (e) => {
     setContent({ ...content, [e.target.id]: e.target.value });
+
     console.log(commenter);
     console.log(JSON.stringify(commenter));
   };
@@ -48,12 +46,12 @@ export default function Comments() {
       content: content.content,
       likes: "0",
     });
+    console.log(commenter);
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      console.log(commenter);
       const response = await fetch(
         `http://localhost:8000/${process.env.COMMENT_LIST}/`,
         {
@@ -139,11 +137,19 @@ export default function Comments() {
   useEffect(() => {
     const item = sessionStorage.getItem("comments");
     getCommentsAndConvertToArray(item);
-  }, []);
+    setCommenter({
+      uid: user?.uid,
+      displayName: user?.displayName,
+      photoURL: user?.photoURL,
+      content: content.content,
+      likes: "0",
+    });
+    console.log(commenter);
+  }, [content]);
   if (loading) {
     return <Loading />;
   }
-
+  console.log(commenter);
   if (user?.uid && comments) {
     return (
       <div className="create-comment-container">
@@ -174,7 +180,10 @@ export default function Comments() {
               <h2>{comment.content}</h2>
               {user?.uid === comment.uid && (
                 <div>
-                  <h3 onClick={(event) => setEditingCommentID(comment.id)}>
+                  <h3
+                    className="edit"
+                    onClick={(event) => setEditingCommentID(comment.id)}
+                  >
                     Edit
                     {editingCommentID === comment.id && (
                       <form
@@ -198,7 +207,10 @@ export default function Comments() {
                       </form>
                     )}
                   </h3>
-                  <h3 onClick={(event) => handleDelete(event, comment.id)}>
+                  <h3
+                    className="delete"
+                    onClick={(event) => handleDelete(event, comment.id)}
+                  >
                     Delete
                   </h3>
                 </div>

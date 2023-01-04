@@ -54,6 +54,7 @@ class Location(models.Model):
     loc_img = models.ImageField(
         upload_to='locations', height_field=None, width_field=None, default="null")
     zipcode = models.CharField(max_length=6)
+    website = models.CharField(max_length=200, default="_blank")
 
     def __str__(self):
         return self.name

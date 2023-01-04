@@ -29,11 +29,10 @@ export default function Games() {
     const item = sessionStorage.getItem("machines");
     getMachinesAndConvertToArray(item);
   }, []);
-
-  console.log(machines);
   if (loading) {
     return <Loading />;
   }
+
   if (machines) {
     return (
       <div className="game-grid">

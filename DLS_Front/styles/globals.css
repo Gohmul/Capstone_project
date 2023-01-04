@@ -51,6 +51,7 @@ height:40px;
 align-items: center;
 border-bottom: 2px solid black;
 font-family: cursive;
+cursor: pointer;
 }
 .nav-item1{
   font-size: 24px;
@@ -345,20 +346,20 @@ font-family: cursive;
   border-radius: 50%;
 }
 
-.game-grid {
+.machine-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
-  grid-gap: 2.5em;
+  grid-gap: 5em;
   margin-top: 5em;
   margin-left: 5em;
   margin-right: 5em;
   margin-bottom: 8em;
 }
 
-.game-item {
+.machine-item {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 30em;
   height: initial;
   box-shadow: inset 0 0 3em #daa753;
   padding-bottom: 2em;
@@ -369,14 +370,73 @@ font-family: cursive;
   box-sizing: border-box;
   align-items: center;
 }
-.gmae-item:hover {
+.machine-item:hover {
   transform: scale(1.05 );
   border: #e06666 dashed 3px;
 }
 
-.game-image {
+.machine-image {
   margin-top: 2em;
   height:400px;
-  width: auto;
-  border-radius: 20%;
+  width: 300px;
+  border-radius: 10%;
   }
+
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-gap: 2.5em;
+    margin-top: 5em;
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-bottom: 8em;
+  }
+  
+  .game-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: initial;
+    box-shadow: inset 0 0 3em #daa753;
+    padding-bottom: 2em;
+    border: 3px solid black;
+    border-radius: .05em;
+    border-style: dashed;
+    border-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    align-items: center;
+  }
+  .game-item:hover {
+    transform: scale(1.05 );
+    border: #e06666 dashed 3px;
+  }
+  
+  .game-image {
+    margin-top: 2em;
+    height:600px;
+    width: auto;
+    border-radius: 20%;
+    }
+  
+
+    .locations{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 2em #daa753;
+      border-radius: .05em;
+      box-sizing: border-box;
+      align-items: center;
+    }
+
+.edit{
+ cursor: pointer;
+}
+
+.delete {
+cursor: pointer;
+}
+
+
