@@ -3,7 +3,11 @@ export default function Footer() {
   return (
     <div className="footer-container">
       <div className="footer">
-        <a target="_blank" className="footer-item githublogo">
+        <a
+          target="_blank"
+          className="footer-item githublogo"
+          href="https://github.com/Gohmul/Capstone_project"
+        >
           <p className="color1">Repo</p>
           <img
             className="githublogo"
