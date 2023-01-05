@@ -24,23 +24,61 @@ a {
   justify-content: center;
   align-items: center;
   background-color: #dfe0df;
-  font-size: 50px;
+  font-size: 3em;
+  height: 4em;
+  margin-top: .7em;
   
   /* width: fit-content; */
 
 }
 
-.header-text {
+.header-text-container {
   font-family:monospace;
   font-family:monospace;
-  color: white;
-  margin-bottom: 1.5em;
 }
+.header-text span:nth-child(1) {
+  color: blue;
+}
+.header-text span:nth-child(2) {
+  color: green;
+}
+.header-text span:nth-child(3) {
+  color: purple;
+}
+.header-text span:nth-child(4) {
+  color: orange;
+}
+.header-text span:nth-child(5) {
+  color: yellow;
+}
+.header-text span:nth-child(6) {
+  color: pink;
+}
+.header-text span:nth-child(7) {
+  color: brown;
+}
+.header-text span:nth-child(8) {
+  color: gray;
+}
+
 
 .header-text:hover {
   cursor: pointer;
-  
 }
+
+@keyframes glowing {
+  0% { text-shadow: 0 0 5px green; }
+  25% { text-shadow: 0 0 20px rgb(90, 0, 104); }
+  50% { text-shadow: 0 0 30px rgb(90, 0, 104); }
+  75% { text-shadow: 0 0 20px rgb(90, 0, 104); }
+  100% { text-shadow: 0 0 5px green; }
+}
+
+.header-text {
+  font-size: 2em;
+  animation: glowing 8s ease-in-out infinite;
+}
+
 
 .header-nav {
   background-color: blue;
@@ -139,6 +177,10 @@ cursor: pointer;
   height: 3em;
 }
 
+.footer-item:hover .githublogo {
+  animation: spin infinite 2s linear;
+}
+
 .footer-item {
   display: flex;
   align-items: center;
@@ -146,8 +188,19 @@ cursor: pointer;
   font-size: 24px;
   margin-right: 50px; 
   text-decoration:none;
-  color:white;
+  color:white;  
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 .color1 {
   text-shadow: 0 -1px 4px rgb(251, 0, 0), 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
   transition: text-shadow 1s ease-in-out;
@@ -161,22 +214,6 @@ cursor: pointer;
 
         }
 
-.color3 {
-  text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #1d4612, 0 0 30px #1d4612, 0 0 40px #1d4612, 0 0 55px #1d4612, 0 0 75px #1d4612;   
-  font-family:fantasy;
-
-}
-.color4 {
-  text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #101dd1, 0 0 30px #101dd1, 0 0 40px #101dd1, 0 0 55px #101dd1, 0 0 75px #101dd1;   
-  font-family:fantasy;
-
-}
-
-.color5 {
-  text-shadow: 0 0 5px rgb(0, 0, 0), 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #5dabcd, 0 0 30px #5dabcd, 0 0 40px #5dabcd, 0 0 55px #5dabcd, 0 0 75px #5dabcd;   
-  font-family:fantasy;
- 
-}
 
 
 .footer-item:hover {
@@ -390,7 +427,7 @@ cursor: pointer;
   border-radius: 10%;
   }
 
-
+/* 
   .game-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, 1fr));
@@ -425,7 +462,7 @@ cursor: pointer;
     height:600px;
     width: auto;
     border-radius: 20%;
-    }
+    } */
   
 
     .locations{
@@ -477,11 +514,19 @@ cursor: pointer;
 
 .comment-content {
   margin-top: 10px;
-  width: 80%; /* Set the width of the element to a percentage of the .comment div */
-  word-wrap: break-word; /* Enable text wrapping */
-  overflow: hidden; /* Hide any content that overflows the boundaries of the .comment div */
+  width: 80%; 
+  word-wrap: break-word; 
+  overflow: hidden; 
 }
 .signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5em;
+}
+
+.home {
   display: flex;
   flex-direction: column;
   justify-content: center;

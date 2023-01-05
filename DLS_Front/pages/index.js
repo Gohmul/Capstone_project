@@ -7,9 +7,10 @@ export default function Home() {
         <title>DLS Games</title>
         <meta name="description" content="Created by Ryan" />
       </Head>
-
-      <h2>This is the home page</h2>
-      <h3>This is a mock website for DLS Games</h3>
+      <div className="home">
+        <h2>This is the home page</h2>
+        <h3>This is a mock website for DLS Games</h3>
+      </div>
     </div>
   );
 }

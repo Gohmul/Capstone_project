@@ -50,7 +50,7 @@ export default function Login() {
   }, [user]);
 
   return (
-    <div>
+    <div className="signin">
       <h3>Sign in with one of the providers</h3>
       <div>
         <button onClick={GoogleLogin}>
