@@ -23,12 +23,6 @@ export default function Locations() {
     }
   };
 
-  function navigateToLocation(locationId) {
-    getApi.getLocationDetails(locationId);
-
-    route.push(`/locations/${locationId}`);
-  }
-
   useEffect(() => {
     getApi.getLocations();
     const item = sessionStorage.getItem("locations");
@@ -42,31 +36,33 @@ export default function Locations() {
   console.log(locations);
   if (locations) {
     return (
-      <div className="locations">
-        {locations.map((location, index) => (
-          <div className="locaiton-grid-item" key={index}>
-            <h2>{location.name}</h2>
-            <Link href={location.website}>
-              <a rel="noopener noreferrer" target="_blank">
-                <img className="location-grid-image" src={location.loc_img} />
-              </a>
-            </Link>
-            <h2>
-              {location.street} , {location.city} , {location.state} ,
-              {location.zipcode}
-            </h2>
+      <div className="container">
+        <div className="locations">
+          {locations.map((location, index) => (
+            <div className="location-grid-item" key={index}>
+              <h2>{location.name}</h2>
+              <Link href={location.website}>
+                <a rel="noopener noreferrer" target="_blank">
+                  <img className="location-grid-image" src={location.loc_img} />
+                </a>
+              </Link>
+              <h2>
+                {location.street} , {location.city} , {location.state} ,
+                {location.zipcode}
+              </h2>
 
-            <div className="machine-grid">
-              {location.machines.map((machine, index) => (
-                <div className="machine-item" key={index}>
-                  <h3>{machine.model} </h3>
-                  <img className="machine-image" src={machine.mach_img} />
-                  <h3>{machine.price}</h3>
-                </div>
-              ))}
+              <div className="machine-grid">
+                {location.machines.map((machine, index) => (
+                  <div className="machine-item" key={index}>
+                    <h3>{machine.model} </h3>
+                    <img className="machine-image" src={machine.mach_img} />
+                    <h3>{machine.price}</h3>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   } else {

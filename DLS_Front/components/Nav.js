@@ -11,9 +11,9 @@ export default function Nav() {
       <Link href="/locations">
         <h2 className="nav-item3">Locations</h2>
       </Link>
-      <Link href="/games">
+      {/* <Link href="/games">
         <h2 className="nav-item4">Games</h2>
-      </Link>
+      </Link> */}
       <Link href="/comments">
         <h2 className="nav-item5">Comments</h2>
       </Link>

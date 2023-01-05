@@ -9,7 +9,7 @@ export default function Home() {
       </Head>
 
       <h2>This is the home page</h2>
-      <h3>Learn web development using the latest tech</h3>
+      <h3>This is a mock website for DLS Games</h3>
     </div>
   );
 }

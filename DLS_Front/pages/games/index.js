@@ -20,10 +20,6 @@ export default function Games() {
     }
   };
 
-  function navigateToMachine(machineId) {
-    route.push(`/games/${machineId}`);
-  }
-
   useEffect(() => {
     getApi.getMachines();
     const item = sessionStorage.getItem("machines");
@@ -37,10 +33,7 @@ export default function Games() {
     return (
       <div className="game-grid">
         {machines.map((machine, index) => (
-          <div
-            className="game-item"
-            onClick={() => navigateToMachine(machine.id)}
-          >
+          <div className="game-item">
             <h2>{machine.model}</h2>
             <img className="game-image" src={machine.mach_img} />
             <h2>${machine.price}</h2>

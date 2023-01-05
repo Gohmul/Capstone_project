@@ -162,7 +162,7 @@ export default function Comments() {
             className="content-section"
             id="content"
             type="text"
-            placeholder="Leave comment here"
+            placeholder="Tell me what you think!"
             autoComplete="off"
             onChange={handleChange}
             value={content.content}
@@ -177,7 +177,7 @@ export default function Comments() {
             <div className="comment" key={index}>
               <h2>{comment.displayName}</h2>
               <img className="comment-image" src={comment.photoURL} />
-              <h2>{comment.content}</h2>
+              <h2 className="comment-content">{comment.content}</h2>
               {user?.uid === comment.uid && (
                 <div>
                   <h3
@@ -228,7 +228,7 @@ export default function Comments() {
           <div className="comment" key={index}>
             <h2>{comment.displayName}</h2>
             <img className="comment-image" src={comment.photoURL} />
-            <h2>{comment.content}</h2>
+            <h2 className="comment-content">{comment.content}</h2>
           </div>
         ))}
       </div>

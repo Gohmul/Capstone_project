@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+html {
+  background-color: #dfe0df;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -39,7 +43,7 @@ a {
 }
 
 .header-nav {
-  background-color: rgb(10, 49, 203);
+  background-color: blue;
 }
 
 .nav {
@@ -233,7 +237,7 @@ cursor: pointer;
 }
 .grid-item:hover {
   transform: scale(1.05 );
-  border: #e06666 dashed 3px;
+  border: blue dashed 3px;
 }
 .grid-image {
   margin-top: 2em;
@@ -292,7 +296,7 @@ cursor: pointer;
     padding: 0.6em 1.2em;
     margin: 0.5em auto;
     width: 100%;
-    border-color: var(--primary-bg);
+    border-color:#a88c66;
     font-size: 1.1rem;
     outline: none;
   }
@@ -302,9 +306,9 @@ cursor: pointer;
   }
   
   form button {
-    background-color: var(--primary-button-hover);
+    background-color:#a88c66;
     margin: 1em 0;
-    color: var(--link-color-secondary);
+    color: #dfe0df;
     align-self: center;
     width: 100%;
   }
@@ -312,11 +316,15 @@ cursor: pointer;
   form button:hover {
     opacity: 0.7;
   }
-  
-  form button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+
+  .create-comment-form {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
 
 .refresh {
   display: flex;
@@ -339,7 +347,7 @@ cursor: pointer;
   align-items: center;
 }
 .comment:hover {
-  border: #e06666 dashed 3px;
+  border: blue dashed 3px;
 }
 
 .comment-image {
@@ -372,7 +380,7 @@ cursor: pointer;
 }
 .machine-item:hover {
   transform: scale(1.05 );
-  border: #e06666 dashed 3px;
+  border: blue dashed 3px;
 }
 
 .machine-image {
@@ -409,7 +417,7 @@ cursor: pointer;
   }
   .game-item:hover {
     transform: scale(1.05 );
-    border: #e06666 dashed 3px;
+    border: blue dashed 3px;
   }
   
   .game-image {
@@ -425,10 +433,6 @@ cursor: pointer;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      box-shadow: inset 0 0 2em #daa753;
-      border-radius: .05em;
-      box-sizing: border-box;
-      align-items: center;
     }
 
 .edit{
@@ -440,3 +444,46 @@ cursor: pointer;
 }
 
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dfe0df;
+}
+
+.location-grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  box-shadow: inset 0 0 3em #daa753;
+  margin-bottom: 10em;
+  margin-top: 10em;
+
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.comment-content {
+  margin-top: 10px;
+  width: 80%; /* Set the width of the element to a percentage of the .comment div */
+  word-wrap: break-word; /* Enable text wrapping */
+  overflow: hidden; /* Hide any content that overflows the boundaries of the .comment div */
+}
+.signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
