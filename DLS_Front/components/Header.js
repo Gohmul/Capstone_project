@@ -1,9 +1,7 @@
 import Welcome from "./Welcome";
-import { useNavigate } from "react-router";
 import Link from "next/link";
 import Nav from "./Nav";
-import GetApi from "../pages/apis/GetApi";
-import { useEffect } from "react";
+
 export default function Header() {
   return (
     <div className="header">

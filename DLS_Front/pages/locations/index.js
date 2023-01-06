@@ -56,7 +56,7 @@ export default function Locations() {
                   <div className="machine-item" key={index}>
                     <h3>{machine.model} </h3>
                     <img className="machine-image" src={machine.mach_img} />
-                    <h3>{machine.price}</h3>
+                    <h3>${machine.price}</h3>
                   </div>
                 ))}
               </div>
